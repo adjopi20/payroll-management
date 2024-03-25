@@ -2,10 +2,7 @@ package com.enigmacamp.PayrollManagement.Entity;
 
 import com.enigmacamp.PayrollManagement.Util.Constant.EPosition;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -15,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "m_position")
+@ToString
 public class Position {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
