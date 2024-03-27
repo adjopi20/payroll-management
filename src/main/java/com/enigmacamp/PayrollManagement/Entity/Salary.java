@@ -13,15 +13,10 @@ import lombok.*;
 @ToString
 public class Salary {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "salary_id")
-    private String id;
-    private long basicSalary;
-    private long allowance;
-
-
-    @OneToOne
-    @JoinColumn(name = "employee_id")
-    private Employee employee;
+    private Long id;
+    private Double basicSalary;
+    private Double allowance;
 
 }

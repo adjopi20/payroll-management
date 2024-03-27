@@ -6,10 +6,7 @@ import com.enigmacamp.PayrollManagement.Service.PositionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,8 +17,8 @@ public class PositionController {
     private final PositionService positionService;
 
     @PostMapping
-    public ResponseEntity<Position> savePosition(Position position){
-        Position savedPosition = positionService.savePosition(position);
+    public ResponseEntity<Position> savePosition(@RequestBody String stringEPosition){
+        Position savedPosition = positionService.savePosition(stringEPosition);
         return new ResponseEntity<>(savedPosition, HttpStatus.CREATED);
     }
 

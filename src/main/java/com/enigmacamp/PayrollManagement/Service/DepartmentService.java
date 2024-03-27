@@ -6,6 +6,6 @@ import com.enigmacamp.PayrollManagement.Entity.Employee;
 import java.util.List;
 
 public interface DepartmentService {
-    Department saveDepartment(Department department);
+    Department saveDepartment(String stringEDepartment);
     List<Department> getAllDepartment();
 }

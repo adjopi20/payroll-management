@@ -16,9 +16,9 @@ import java.util.List;
 @ToString
 public class Department {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "department_id")
-    public String id;
+    public Long id;
     public EDepartment name;
 
     @ManyToMany(mappedBy = "departments")

@@ -12,9 +12,9 @@ import lombok.*;
 @ToString
 public class Tax {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tax_id")
-    private String id;
+    private Long id;
 
     private float taxPercentage;
 

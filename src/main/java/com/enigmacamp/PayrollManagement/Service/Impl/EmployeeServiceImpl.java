@@ -1,10 +1,12 @@
 package com.enigmacamp.PayrollManagement.Service.Impl;
 
 import com.enigmacamp.PayrollManagement.Entity.Employee;
+import com.enigmacamp.PayrollManagement.Repository.EmployeeRepository;
 import com.enigmacamp.PayrollManagement.Service.EmployeeService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,21 +15,26 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private final EntityManager entityManager;
+    @Autowired
+    private final EmployeeRepository employeeRepository;
     @Override
     public Employee saveEmployee(Employee employee) {
-        return null;
+        return employeeRepository.save(employee);
     }
 
     @Override
     public List<Employee> getAllEmployee() {
-        Query query = entityManager.createNativeQuery("SELECT e from m_employee e", Employee.class);
-        return query.getResultList();
+        return  employeeRepository.findAll();
     }
 
     @Override
     public Optional<Employee> getEmployeeById(String id) {
         return Optional.empty();
+    }
+
+    @Override
+    public Optional<Employee> getEmployeeById2(Long id) {
+        return employeeRepository.getEmployeeById(id);
     }
 
     @Override

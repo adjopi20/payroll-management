@@ -15,9 +15,9 @@ import java.util.List;
 @ToString
 public class Position {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="position_id")
-    public String id;
+    public Long id;
     public EPosition name;
 
     @ManyToMany

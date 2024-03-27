@@ -10,17 +10,12 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "trx_payment")
-@ToString
-public class TransactionPayment {
+@Table(name = "payment_detail")
+public class PaymentDetail {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "trx_payment_id")
-    private String id;
-
-    private Date date;
-    private long penalty;
-    private long bonus;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "payment_detail_id")
+    private Long id;
 
     @OneToOne
     @JoinColumn(name="employee_id")
@@ -33,5 +28,9 @@ public class TransactionPayment {
     @OneToOne
     @JoinColumn(name = "tax_id")
     private Tax tax;
+
+    private long penalty;
+    private long bonus;
+
 
 }
