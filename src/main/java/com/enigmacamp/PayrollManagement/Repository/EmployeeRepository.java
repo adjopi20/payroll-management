@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface EmployeeRepository  extends JpaRepository<Employee, String> {
+public interface EmployeeRepository  extends JpaRepository<Employee, Long> {
 
     @Query(value= "SELECT * FROM m_employee WHERE department_id = ?", nativeQuery = true)
     List<Employee> findByDepartmentId(String departmentId);

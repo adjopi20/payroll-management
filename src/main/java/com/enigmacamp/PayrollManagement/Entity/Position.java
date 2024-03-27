@@ -20,7 +20,7 @@ public class Position {
     public String id;
     public EPosition name;
 
-    @ManyToOne
+    @ManyToMany
     @JoinTable(
             name = "position_department",
             joinColumns = @JoinColumn(name="position_id"),

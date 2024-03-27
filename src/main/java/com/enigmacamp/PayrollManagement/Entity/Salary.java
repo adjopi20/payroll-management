@@ -4,23 +4,24 @@ import com.enigmacamp.PayrollManagement.Util.Constant.EDepartment;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
-import java.util.List;
-
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "m_department")
+@Table(name = "salary")
 @ToString
-public class Department {
+public class Salary {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "department_id")
-    public String id;
-    public EDepartment name;
+    @Column(name = "salary_id")
+    private String id;
+    private long basicSalary;
+    private long allowance;
 
-    @ManyToMany(mappedBy = "departments")
-    public List<Position> positions;
+
+    @OneToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+
 }

@@ -15,12 +15,11 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id")
-    private String id;
+    private Long id;
     private String name;
     private String email;
     private String phoneNumber;
     private Date hireDate;
-    private double salary;
     private String jobTitle;
 
     @OneToOne
@@ -30,4 +29,6 @@ public class Employee {
     @OneToOne
     @JoinColumn(name="department_id")
     private Department department;
+
+
 }

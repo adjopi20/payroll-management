@@ -21,8 +21,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> getAllEmployee() {
-        Query query = entityManager.createNativeQuery(())
-        return null;
+        Query query = entityManager.createNativeQuery("SELECT e from m_employee e", Employee.class);
+        return query.getResultList();
     }
 
     @Override
