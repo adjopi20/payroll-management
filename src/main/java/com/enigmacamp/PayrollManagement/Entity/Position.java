@@ -16,15 +16,10 @@ import java.util.List;
 public class Position {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="position_id")
     public Long id;
+
+    @Column(unique = true)
+    @Enumerated(EnumType.STRING)
     public EPosition name;
 
-    @ManyToMany
-    @JoinTable(
-            name = "position_department",
-            joinColumns = @JoinColumn(name="position_id"),
-            inverseJoinColumns = @JoinColumn(name="department_id")
-    )
-    private List<Department> departments;
 }

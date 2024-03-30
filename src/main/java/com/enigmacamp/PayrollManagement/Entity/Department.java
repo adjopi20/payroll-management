@@ -13,14 +13,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "m_department")
-@ToString
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "department_id")
     public Long id;
-    public EDepartment name;
 
-    @ManyToMany(mappedBy = "departments")
-    public List<Position> positions;
+    @Column(unique = true)
+    @Enumerated(EnumType.STRING)
+    public EDepartment name;
 }

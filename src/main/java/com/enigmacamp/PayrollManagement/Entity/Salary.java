@@ -14,7 +14,6 @@ import lombok.*;
 public class Salary {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "salary_id")
     private Long id;
     private Double basicSalary;
     private Double allowance;

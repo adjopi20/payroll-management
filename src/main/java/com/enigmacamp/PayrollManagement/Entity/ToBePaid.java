@@ -1,36 +1,27 @@
 package com.enigmacamp.PayrollManagement.Entity;
 
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.*;
-
-import java.util.Date;
 
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "payment_detail")
-public class PaymentDetail {
+@Table(name = "tobepaid_detail")
+public class ToBePaid {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "payment_detail_id")
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="employee_id")
     private Employee employee;
-
-    @OneToOne
-    @JoinColumn(name = "salary_id")
-    private Salary salary;
-
-    @OneToOne
-    @JoinColumn(name = "tax_id")
-    private Tax tax;
 
     private long penalty;
     private long bonus;
 
-
+    @Column(name = "net_salary")
+    private Integer netSalary;
 }

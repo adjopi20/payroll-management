@@ -13,8 +13,8 @@ import java.util.Optional;
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     @Query(value= "SELECT * FROM m_employee WHERE department_id = ?", nativeQuery = true)
-    List<Employee> findByDepartmentId(String departmentId);
+    List<Employee> findByDepartmentId(Long departmentId);
 
-    @Query(value= "SELECT * FROM m_employee WHERE employee_id = ?1", nativeQuery = true)
+    @Query(value= "SELECT * FROM m_employee WHERE id = ?1", nativeQuery = true)
     Optional<Employee> getEmployeeById(Long employeeId);
 }

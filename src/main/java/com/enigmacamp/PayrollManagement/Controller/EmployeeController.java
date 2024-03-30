@@ -34,8 +34,14 @@ public class EmployeeController {
     }
 
     @GetMapping("/tes2/{id}")
-    public ResponseEntity<Optional<Employee>> getAllEmployees2(@PathVariable Long id){
+    public ResponseEntity<Optional<Employee>> getEmployeeById(@PathVariable Long id){
         Optional<Employee> employees = employeeService.getEmployeeById2(id);
+        return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
+
+    @GetMapping("/find-by-department/{id}")
+    public ResponseEntity<List<Employee>> getAllEmployeesByDepartmentId(@PathVariable Long id){
+        List<Employee> employees = employeeService.findEmployeeByDeptid(id);
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 }

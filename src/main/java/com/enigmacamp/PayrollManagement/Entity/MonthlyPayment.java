@@ -2,7 +2,6 @@ package com.enigmacamp.PayrollManagement.Entity;
 
 import com.enigmacamp.PayrollManagement.Util.Constant.Status;
 import jakarta.persistence.*;
-import jdk.jshell.Snippet;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,19 +14,19 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "payment")
-public class Payment {
+@Table(name = "monthly_payment")
+public class MonthlyPayment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "payment_id")
     private Long id;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date paymentDate;
 
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @OneToOne
-    @JoinColumn(name = "payment_detail_id")
-    private PaymentDetail paymentDetail;
+    @JoinColumn(name = "tbpd_id")
+    private ToBePaid toBePaid;
 }
