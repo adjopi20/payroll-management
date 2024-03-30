@@ -44,4 +44,10 @@ public class EmployeeController {
         List<Employee> employees = employeeService.findEmployeeByDeptid(id);
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
+
+    @GetMapping("/marketing-staff")
+    public ResponseEntity<List<Employee>> getMarketingStaff(){
+        List<Employee> employees = employeeService.findMarketingStaff();
+        return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
 }

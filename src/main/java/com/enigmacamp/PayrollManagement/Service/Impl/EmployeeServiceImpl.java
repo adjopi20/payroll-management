@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
@@ -48,7 +50,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void deleteEmployee(String id) {
-
+    public void deleteEmployee(Long id) {
+        employeeRepository.deleteById(id);
     }
+
+    @Override
+    public List<Employee> findMarketingStaff() {
+        List<Employee> employees = employeeRepository.findAll();
+
+        return employees.stream()
+                .filter(employee -> "MARKETING".equals(employee.getDepartment().getName()))
+                .filter(employee -> "STAFF".equals(employee.getPosition().getName()))
+                .collect(Collectors.toList());
+    }
+
+
 }
