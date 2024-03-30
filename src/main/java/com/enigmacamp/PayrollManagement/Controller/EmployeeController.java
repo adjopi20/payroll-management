@@ -50,4 +50,10 @@ public class EmployeeController {
         List<Employee> employees = employeeService.findMarketingStaff();
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
+
+    @GetMapping("/more-than-5")
+    public ResponseEntity<List<Employee>> findEmployeesWithMoreThan5YearsOfService(){
+        List<Employee> employees = employeeService.findEmployeesWithMoreThan5YearsOfService();
+        return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
 }
