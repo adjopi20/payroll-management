@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -61,6 +64,19 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employees.stream()
                 .filter(employee -> "MARKETING".equals(employee.getDepartment().getName()))
                 .filter(employee -> "STAFF".equals(employee.getPosition().getName()))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Employee> findEmployeesWithMoreThan5YearsOfService() {
+        LocalDate currentDate = LocalDate.now();
+
+        return employeeRepository.findAll().stream()
+                .filter(employee -> {
+                    LocalDate hireDate = employee.getHireDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                    long yearsOfService = ChronoUnit.YEARS.between(hireDate, currentDate);
+                    return yearsOfService > 5;
+                })
                 .collect(Collectors.toList());
     }
 

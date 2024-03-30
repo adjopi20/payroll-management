@@ -14,5 +14,6 @@ public interface EmployeeService {
     Employee updateEmployee(Employee employee);
     void deleteEmployee (Long id);
     List<Employee> findMarketingStaff();
+    List<Employee> findEmployeesWithMoreThan5YearsOfService();
 
 }
